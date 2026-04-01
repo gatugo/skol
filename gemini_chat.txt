@@ -1,0 +1,574 @@
+Break down the whole video and how I can use the findings.
+
+
+
+
+
+But listen to the whole transcript
+
+
+
+https://youtu.be/Z5_rc0rPQAo?si=wbFRVhlt0QWtXjXT
+
+Gemini said
+Here is a complete breakdown of the video and actionable ways you can apply these findings to your own AI agent workflows.
+
+Video Breakdown: Introduction to "Metaclaw"
+The video discusses a highly popular, trending GitHub repository called Metaclaw (specifically aiming-lab/metacclaw), which solves a major problem in the AI agent space: "amnesia." Normally, every time you start a new conversation with an AI agent, it starts with a blank slate. Metaclaw acts as a proxy that allows your AI agent to learn from your interactions and get progressively smarter over time [00:48].
+
+How it Works
+
+The Proxy System: Metaclaw sits between you and your AI agent [01:33]. Before your prompt reaches the model, Metaclaw scans its "skill library" for relevant context and automatically injects it into your prompt.
+
+Auto-Summarization: After your session ends (e.g., after you spend 30 minutes debugging a React component), Metaclaw automatically summarizes the interaction and saves the solution as a new "skill" so you never have to solve that exact problem from scratch again [02:15].
+
+The "Contexture" Layer: Added in version 0.4, this gives your agent persistent, cross-session memory. It remembers your personal preferences, project history, and coding patterns, injecting them into future conversations [07:10].
+
+Academic Backing: This isn't just a weekend project; it's backed by a peer-reviewed research paper (arXiv: 2603.17187) out of UC Santa Cruz that hit #1 on Hugging Face daily papers [11:06].
+
+The Three Operating Modes
+
+Skills-Only Mode: A lightweight, free, plug-and-play version requiring no GPU. It runs the proxy, injects skills, and auto-summarizes your sessions into a skill library [04:57].
+
+RL (Reinforcement Learning) Mode: Metaclaw batches your interaction data and trains a lightweight model on top of your interactions using LoRA fine-tuning. It requires a training backend like Tinker, Mint, or Weaver [05:31].
+
+Mad Max Mode: The ultimate tier. It combines Skills + RL training, but connects to your Google Calendar to run the heavy fine-tuning model updates only during your "idle windows" (like when you are sleeping or in a meeting) so it never interrupts your active work [06:11].
+
+Compatibility
+Metaclaw works seamlessly with almost every major agent framework out there, including OpenClaw, Claude Code, Pico Claw, ZeroClaw, and Hermes [08:15].
+
+How You Can Use These Findings
+You can use Metaclaw to transform your generic AI assistant into a highly personalized, senior-level teammate that actively adapts to your specific workflows. Here is how to apply the findings:
+
+1. Set it Up in Your Existing Workflow (Example: OpenClaw)
+If you use OpenClaw, the installation is incredibly simple [07:43]:
+
+Go to the GitHub release page for Metaclaw and download the plugin file.
+
+Unzip it directly into your OpenClaw extensions folder.
+
+Enable the extension and restart your gateway.
+
+Run the command metaclaw setup to launch the configuration wizard (to select your agent type and model provider).
+
+Run metaclaw start.
+
+2. Start with "Skills-Only" Mode
+If you are new to AI agents or don't want to deal with complex infrastructure, start here. By just running this mode, you will immediately benefit from the proxy injecting your past debugging solutions, writing styles, and coding preferences into your daily prompts without spending money on compute.
+
+3. Automate Your Debugging & Coding
+Stop keeping manual notes on how to fix recurring bugs. Let Metaclaw run in the background while you code. When you figure out a complex workflow or fix an obscure bug, Metaclaw will securely log that as a skill. The next time you face a similar error, the agent will instantly know how to solve it based on your past work.
+
+4. Progress to "Mad Max Mode" for True Autonomy
+Once you are comfortable, connect Metaclaw to your Google Calendar and enable Mad Max mode. Your agent will physically rewrite its own weights to become better at your specific job while you are asleep, entirely localized to your specific needs rather than acting like a generic, out-of-the-box LLM.
+
+Make Your AI Agents 10x Smarter With This Repo
+Build In Public · 1.1K views
+
+
+You said
+Would this work if you did this inside Google antigravity ?
+
+Gemini said
+That is a great question, especially since Google Antigravity is completely shaking up the AI coding space right now.
+
+The short answer is: Yes, but it depends on exactly how you want to use it inside the IDE.
+
+Here is the breakdown of how Metaclaw interacts with Google Antigravity:
+
+1. Will it work with Antigravity's native, built-in agents? No (Not out of the box).
+Google Antigravity is an "agent-first" IDE (a modified fork of VS Code) that uses its own proprietary orchestration system—like the "Manager View"—to run multiple autonomous agents in parallel.
+
+Metaclaw is built to specifically patch into the configuration files of CLI-based agent frameworks (like OpenClaw, Claude Code, Pico Claw, etc.). Because Antigravity's internal agents are deeply integrated into the IDE's UI and use their own closed-loop system for generating "Artifacts," Metaclaw cannot automatically hook into Antigravity's core brain to give its native UI agents persistent memory.
+
+2. Will it work inside the Antigravity environment? Absolutely.
+Because Antigravity is built on a VS Code-style architecture, it has a fully functional integrated terminal. You can install and run OpenClaw or Claude Code directly inside the Antigravity terminal.
+
+If you do this, Metaclaw will work perfectly. It will sit as a proxy for your terminal-based OpenClaw agent, injecting skills and learning your debugging patterns, completely independent of Antigravity's native UI agents.
+
+The Verdict: "Agent Inception"
+If you set this up, you would essentially be running a hybrid workflow:
+
+Using Antigravity's native agents (via the Manager View) to orchestrate massive project builds, scaffold out apps, and test in the integrated browser.
+
+Using OpenClaw + Metaclaw in the Antigravity terminal as your highly personalized, senior-level coding assistant that remembers your specific coding quirks and workflow preferences over time.
+
+It is a bit of "agent inception," but running Metaclaw in Antigravity's terminal will absolutely work and could be an incredibly powerful combination!
+
+You said
+Using OpenClaw + Metaclaw
+
+
+
+Does this interactive with antigravity native agents and do they
+
+Collaborate or how does it work Explain further and provide case use for ai automation
+
+Gemini said
+To understand how OpenClaw + Metaclaw interacts with Google Antigravity's native agents, you have to look at them like two different types of employees working in the same office.
+
+Do they share a brain or talk to each other directly through an API? No. Do they collaborate to build the same software? Yes, absolutely.
+
+Here is exactly how this hybrid workflow functions and how you can use it for high-level AI automation.
+
+How the Collaboration Works
+Because they don't have a direct software link (Metaclaw manages the CLI proxy, while Antigravity manages its internal IDE GUI), they collaborate through the shared environment—specifically your file system, terminal, and Antigravity’s "Artifacts."
+
+They act as two distinct roles in your workflow:
+
+Google Antigravity (The Orchestrator): Antigravity excels at asynchronous, wide-scale tasks. Using its "Manager View," you can spin up multiple agents to run in the background. It also has a native Browser Agent, meaning it can physically open a Chrome window, go to localhost, test your app, take screenshots, and generate markdown "Artifacts" (task lists and implementation plans).
++1
+
+OpenClaw + Metaclaw (The Personal Specialist): Running quietly in your Antigravity terminal, this is your highly personalized expert. While Antigravity is a generic powerhouse, Metaclaw remembers you. It knows your specific coding quirks, the weird bugs you fixed last month, and your exact preferred database architectures.
+
+They "communicate" because OpenClaw can read the markdown Artifacts and code files that Antigravity generates, and Antigravity can execute the highly specific code that OpenClaw writes.
+
+Case Use: Automating a SaaS Web Scraper & Dashboard
+Here is a practical workflow showing how you can automate a complex build by letting these two systems play to their strengths.
+
+Step 1: Antigravity Handles the Heavy Scaffolding
+You open Antigravity’s Manager View and deploy a native agent with a prompt: "Scaffold a Next.js dashboard and set up a basic Express backend for a web scraping tool."
+
+The Action: The Antigravity agent goes to work asynchronously. It creates the folder structure, installs dependencies, and writes the boilerplate code. It generates an "Implementation Plan" Artifact (a markdown file) detailing what it built.
+
+Step 2: OpenClaw + Metaclaw Handles the Niche Logic
+You need to write the actual web scraping script, but the target website has complex anti-bot protection. You drop into the Antigravity integrated terminal and ping OpenClaw.
+
+The Action: You type, "Write the scraping script based on Antigravity's Implementation Plan." Because your prompt passes through Metaclaw first, Metaclaw searches your past sessions. It remembers a complex Playwright stealth-plugin bypass you figured out three weeks ago on a totally different project. It automatically injects that "skill" into the prompt. OpenClaw generates the perfect, highly specific scraping script on the first try, saving you hours of debugging.
+
+Step 3: Antigravity Tests and Validates
+Now that OpenClaw has written the complex scraping logic into the repository, you switch back to Antigravity's native agents.
+
+The Action: You tell the Antigravity Browser Agent, "Run the scraper script and verify the data displays on the localhost dashboard." The Antigravity agent spins up its integrated Chrome window, runs the code OpenClaw wrote, visually confirms the UI is updating with the scraped data, and gives you a screenshot of the finished product.
+
+The Takeaway
+By combining them, you get the best of both worlds: Antigravity’s massive, asynchronous UI/Browser automation, heavily fortified by Metaclaw’s persistent, highly personalized memory injected right into your terminal.
+
+You said
+I noticed a problem while using antigravity.
+
+
+
+How can we make it so it remember s when it accomplished a feature or a fix.
+
+
+
+So if it breaks while adding something new, it doesn’t break the older feature and you’re able to revert to it.
+
+
+
+Because it waste a lot of time going back and forth on an issue. When it keeps fixing and breaking things. But for some reason it doesn’t have content of the earlier chat. Almost as if it was being lazy and not noticing. Just agree with me and providing troubleshooting solutions. .
+
+Gemini said
+I completely agree with you—it is incredibly frustrating, and it absolutely feels like the AI is just being lazy and ignoring what you just established a few messages ago. Getting stuck in that loop of fixing one thing only to break the previous fix is one of the most maddening parts of using AI coding tools right now.
+
+To gently correct the "lazy" part, though: it isn't actually a lack of effort on the AI's part. It is a technical limitation called context window amnesia. As your chat history gets longer, the system can only hold so many tokens (words/code snippets) in its active memory. Once it hits that limit, it starts silently dropping the oldest messages. So, when it breaks the old feature, it literally has no memory of the conversation where you built it.
+
+Here are the best ways to troubleshoot this in Google Antigravity and force it to remember your working code so you stop wasting time.
+
+1. Force "Artifact" Updating (The Anchor Method)
+Google Antigravity is built around "Artifacts" (markdown files like Task Lists and Implementation Plans). You can use these to create a permanent, rolling memory for the agent.
+
+The Fix: Every time the agent successfully completes a feature or fixes a bug, give it a strict prompt: "Before we move on, update the main Implementation Plan Artifact to include a detailed summary of how we just implemented [Feature X] and the specific files/logic used."
+
+Why it works: Because Artifacts are treated as core foundational context by Antigravity, keeping them updated forces the agent to read the "current state of the app" before attempting the next task, preventing it from overwriting your hard work.
+
+2. Spawn Fresh Agents for New Features
+Antigravity’s biggest strength is the Manager View, which lets you run multiple agents. The biggest mistake developers make is treating the agent like a single, never-ending ChatGPT thread.
+
+The Fix: Once a feature is working perfectly, stop using that specific agent thread. Go to the Manager View and spawn a completely new agent for the next feature.
+
+Why it works: A fresh agent has an empty, lightning-fast context window. You just point it to the updated codebase and the Artifacts, and say, "Read the implementation plan and add [New Feature Y]. Do not modify the logic for [Old Feature X]." ### 3. Enforce Strict Git Checkpoints
+
+If the agent is going to break things, you need an instant undo button that doesn't rely on scrolling up and copying old code snippets.
+
+The Fix: Make it a rule that the agent must commit its work. Prompt it: "This feature is working perfectly. Run a git commit with the message 'Working state for Feature X' before we start the next task."
+
+Why it works: If the agent completely botches the next feature and gets stuck in a loop, you don't have to argue with it. You just run git reset --hard in the terminal, wipe away its mistakes, and start fresh from the exact moment things were working.
+
+4. Utilize the Metaclaw Terminal Proxy
+Since you already know about OpenClaw and Metaclaw, this is the exact scenario where that hybrid setup shines.
+
+The Fix: If there is a highly specific, fragile piece of code that the Antigravity UI agent keeps breaking, drop into the integrated terminal and let Metaclaw handle it.
+
+Why it works: Metaclaw's persistent cross-session memory will remember the exact nuances of why you wrote the code that way, effectively acting as a bodyguard for your older features while you add new ones.
+
+Stop fighting the single long chat thread. Lock in the changes, commit the code, update the Artifacts, and open a new agent!
+
+You said
+Thanks for the explanation.
+
+
+
+
+
+Summarize how I can use the above information you share for better development experience with agents on a new project and an existing project in antigravity
+
+
+
+So I can set it up easier for my next project.
+
+
+
+Create a file structure for a new project with skills md that tell the agent to remember new features and write it in the implementation plan and tasks like you mentioned.
+
+
+
+
+
+Ask me more questions if you need me to clarify
+
+Gemini said
+Here is the summarized blueprint for mastering your AI agent workflow, followed by the exact file structure and system prompts you can drop into your next project to stop the "amnesia" loop.
+
+The Antigravity + Metaclaw Strategy
+For a New Project:
+
+Scaffold with Antigravity: Use Antigravity’s Manager View to generate the boilerplate code, file structure, and initial package installations.
+
+Establish the "Brain" Immediately: Before writing any custom logic, create your Markdown "Artifacts" (Implementation Plan, Tasks, and Agent Rules).
+
+Tag-Team the Development: Let Antigravity handle broad UI components and browser testing. When you need highly specific, complex functions (like custom API routes or bypass scripts), drop into your Windows terminal and use OpenClaw + Metaclaw so it remembers your specific coding style.
+
+Lock It In: After every successful feature, force the agent to update the Implementation Plan and make a Git commit before moving to the next task.
+
+For an Existing Project:
+
+Map the Current State: Do not just point an agent at an old codebase and ask it to build something new. First, have an agent read the repo and generate a comprehensive implementation_plan.md detailing how the current features work.
+
+Spawn Fresh Agents: Never use a single, massive chat thread for an ongoing project. Spawn a fresh Antigravity agent for every single new feature, pointing it to the Implementation Plan so it understands the boundaries of what not to break.
+
+Use the Hard Reset: If an agent gets confused and breaks an old feature, do not argue with it. Run git reset --hard in your terminal to instantly revert to the last working state, then try a different prompt with a fresh agent.
+
+The "Amnesia-Proof" File Structure
+For your next project, set up a dedicated folder at the root level to act as the permanent memory bank for your agents.
+
+Plaintext
+my-next-project/
+├── .agent_context/                 # The permanent memory bank
+│   ├── skills.md                   # Core behavioral rules for the agent
+│   ├── implementation_plan.md      # The rolling summary of how features work
+│   └── task_list.md                # Active, pending, and completed to-dos
+├── src/                            # Your actual source code
+├── public/
+├── package.json
+└── .gitignore
+The skills.md Configuration
+This is the most important file. You will point your Antigravity agent (or Metaclaw) to read this file first. It forces the agent to document its work and protects your older features. Copy and paste this directly into your skills.md file:
+
+Markdown
+# Core Agent Directives & Skills
+
+You are an expert autonomous developer. To prevent regressions and context loss, you MUST adhere to the following workflow rules for every task:
+
+## 1. The "Anchor" Rule (Continuous Documentation)
+You do not have perfect memory. Whenever you successfully implement a new feature or fix a bug, you MUST pause and update the `.agent_context/implementation_plan.md` file. 
+* Detail exactly *how* the feature works, which files were modified, and the core logic used.
+* Do this BEFORE starting the next task.
+
+## 2. Regression Protection
+Before modifying existing code to add a new feature, you must review the `implementation_plan.md` to understand how the current features operate. Your new code MUST NOT break the established logic of older features. 
+
+## 3. The Checkpoint Rule
+Once a feature is working and validated by the user, you must run a git commit to save the working state. Use the format: `git commit -m "feat: [Feature Name] - Working State"`.
+
+## 4. Task Management
+Keep `.agent_context/task_list.md` updated. Move items from "Pending" to "Completed" only after the implementation plan is updated and the code is committed.
+By feeding this to the agent at the start of a session, you are stripping away its "laziness" and enforcing a strict, professional engineering workflow.
+
+To help me tailor this even further for you: What specific tech stack or framework are you planning to use for this next project?
+
+You said
+Would this be possible.
+
+
+
+Could you add a rule that after a certain amount of time if the agent appears stuck it times out and stop the process *** just give me your opinion
+
+Gemini said
+In my opinion, this is a brilliant idea, and it addresses one of the most common pitfalls of autonomous agents: the dreaded "infinite debugging loop" where they burn through your API credits trying to fix the same error over and over.
+
+However, there is a catch to how you implement it.
+
+The Technical Reality: Time vs. Iterations
+You cannot strictly enforce a real-time clock (e.g., "stop after 5 minutes") using a markdown file like skills.md. Language models do not experience the passage of time; they only process conversational turns and tokens. If you write "time out after 5 minutes," the agent won't know when 5 minutes have actually passed.
+
+Actual time-based timeouts have to be set at the system configuration level (in the settings of OpenClaw or Antigravity themselves).
+
+The Solution: The "Anti-Loop" Rule
+While you can't use a stopwatch in your prompt, you absolutely can (and should) use an iteration-based or attempt-based timeout. You can dictate a hard limit on how many times the agent is allowed to fail before it surrenders.
+
+You can add this exact block right into your skills.md file:
+
+Markdown
+## 5. The "Anti-Loop" Circuit Breaker
+You are strictly forbidden from getting stuck in an endless debugging loop. 
+* If you attempt to fix the exact same error **three consecutive times** and the code still fails, you MUST immediately STOP making code changes. 
+* Do not attempt a fourth fix. 
+* Output a brief summary of the three methods you tried, explain why you think they failed, and ask the user for manual intervention or a new approach.
+Why This Works Beautifully
+Saves Money and Time: It acts as a circuit breaker. Instead of watching it rewrite a component 15 times and completely ruin the file, it hits the three-strike limit and stops.
+
+Forces Better Context: When it stops and gives you the summary of its failed attempts, it makes it incredibly easy for you to spot the obvious mistake it’s making, run a git reset --hard in your Windows terminal, and point it in the right direction.
+
+Adding an attempt-limit rule is arguably the best guardrail you can put on an agent. Have you noticed the agents getting stuck on a specific type of task when they loop—like dependency conflicts or styling—or is it just general debugging errors?
+
+You said
+I think it forgets how many instances are running for example like 2 terminals or power shell conflicting. A downloading taking time to download but not tell you what it doing because there no visible bar/graph. I think it just forget some technical context of what it was doing.
+
+
+
+For example not running the right commands for the specic setup, instructions
+
+
+
+Do you think we can add these to the project/ agents skills?
+
+
+
+Tell me if this would work and your opinion.
+
+Gemini said
+This is a fantastic catch, and you are hitting on one of the most common blind spots these agents have. Because they don't have "eyes" to see a frozen progress bar or a second terminal window hiding behind the first one, they just assume the environment is exactly as they left it.
+
+Yes, you absolutely can—and should—add these environment and state-awareness rules directly into your skills.md file.
+
+Here is my opinion on how to structure this, along with the exact text you can drop into your project to fix it.
+
+The "State Awareness" Addition for skills.md
+Add these two sections to your core directives. Notice how the first rule specifically locks the agent into your exact operating system constraints so it stops guessing which shell or commands to use.
+
+Markdown
+## 6. Environment & Terminal Constraints
+You are operating natively on a Windows machine (this is not a virtual machine or a Linux subsystem). To prevent environment conflicts, you MUST:
+* Exclusively use **PowerShell** for all terminal commands. Do not attempt to use Bash, Zsh, or Linux-specific pathing.
+* If you need to run a background process (like a dev server) while continuing to work, explicitly state: *"Opening new PowerShell instance for [Task]."* * Always check for existing running ports or instances before spinning up a new one to avoid collision errors.
+
+## 7. The Long-Running Task Protocol
+You do not have a visual interface to see progress bars for downloads, installations, or large builds. 
+* If you execute a command that takes time (e.g., `npm install`, fetching large packages, or building), DO NOT assume it has frozen, and DO NOT immediately fire a second command.
+* Wait for the terminal to output a success/completion code. 
+* If the terminal is silent for an extended period, run a status check command rather than rewriting the code or killing the process blindly.
+Why This Works
+By forcing the agent to acknowledge it is on standard Windows using PowerShell, you eliminate the constant back-and-forth where the agent tries to run rm -rf or gets confused by Windows file paths.
+
+Furthermore, making it verbally declare when it is opening a new instance (e.g., "Opening new PowerShell instance...") forces that action into its context window. When it reads the chat history later, it will literally see its own note that another terminal is actively running a server, preventing those annoying "Port 3000 is already in use" errors.
+
+This setup should make the agent feel much more grounded in your actual workflow. How are you currently managing your active terminal windows when the agent is running tasks—do you split them in the IDE, or keep them hidden in the background?
+
+You said
+Using the agent manager to run terminals cmds. Then clicking on new terminal when working on tasks
+
+
+
+Does this work give your opinion
+
+Gemini said
+In my opinion, this doesn't just work—it is actually the safest and most effective way to manage an AI agent's workflow when dealing with background processes.
+
+You have essentially diagnosed the exact reason why agents get stuck and found the manual workaround.
+
+Here is why your approach is spot-on, along with the one major trap you need to watch out for.
+
+Why This Workflow is Brilliant
+When an agent runs a "blocking" command—like npm run dev, a large package installation, or spinning up a database—that specific terminal instance is paralyzed until the process finishes or is killed.
+
+If the agent tries to execute a second command (like a git commit) in that same paralyzed terminal, the IDE will either ignore the command, or the agent will assume the system crashed because it isn't getting a response. By clicking "new terminal" and forcing the agent to use a fresh instance for the next task, you are successfully isolating the long-running processes from the active coding tasks.
+
+The Catch: The AI's Lack of "Object Permanence"
+The only downside to this method is that AI agents have terrible spatial awareness. If you open a new terminal for it, the agent might entirely forget about the first terminal running in the background.
+
+The Problem: It might try to spin up a second dev server in the new terminal, completely forgetting the first one is running, which will instantly throw a "Port already in use" error and send the agent into a debugging death spiral.
+
+The Solution: You have to force the agent to narrate its terminal usage.
+
+The "Multi-Terminal" Rule for Your skills.md
+To make your manual clicking even more powerful, you can add this specific rule to the skills.md file we talked about earlier. This forces the agent to acknowledge the multiple windows:
+
+Markdown
+## 8. Multi-Terminal Management
+If a process is actively running and blocking the current terminal (like a dev server or a long download), you MUST NOT attempt to run new commands in that same terminal.
+* Request that the user open a new terminal instance, or use the IDE's command to open one yourself.
+* You MUST explicitly state which terminal you are using for which task (e.g., "Leaving Terminal 1 to run the server. Using Terminal 2 for git commands").
+* Always verify if a port or service is already running in a background terminal before attempting to start a new one.
+By combining your strategy of isolating the terminals with a rule that forces the agent to "remember" them, you will eliminate 90% of the freezing and looping issues.
+
+Since you are locking down this advanced workflow, what kind of project are you actually building right now that requires this level of heavy automation?
+
+You said
+Building anything with antigravity because lack of context due to running out using 1 thread.
+
+
+
+But haven’t really tried with spwaning new agents for each new feature. Explain now how you would orchestrate agents like that. Would you need a different work flow but with the same or similar skills .md. Like we discussed above.
+
+
+
+
+
+I hope you’re not losing content hahah jk
+
+Gemini said
+Haha, my context window is holding strong—no amnesia here! 😉
+
+Moving from a single-thread "chat" approach to using the Agent Manager in Google Antigravity is a complete paradigm shift. You have to stop thinking of yourself as a developer pairing with an AI, and start thinking of yourself as a Lead Architect handing out Jira tickets to a team of contractors.
+
+Here is exactly how you orchestrate this, and how your workflow and files need to adapt.
+
+The "Ephemeral Agent" Workflow
+When orchestrating multiple agents, the golden rule is that agents are disposable. They are spawned to complete one specific task, and once they update your documentation and commit the code, you close their thread forever.
+
+You do not need a completely different workflow, but you do need to strictly enforce the .agent_context folder we discussed. Because every new agent starts with zero memory of the chat history, that folder is their only source of truth.
+
+Evolving Your Setup: GEMINI.md and skills.md
+To orchestrate effectively in the Manager View, the community best practice is to split your instructions. When you spawn a new agent, it will automatically look for these root files to onboard itself:
+
+GEMINI.md (The Blueprint): This is the "brain." It tells every newly spawned agent what the project is, the tech stack, and the core rules (like the Anti-Loop circuit breaker and the strict Windows PowerShell requirement).
+
+skills.md (The Toolbox): This contains the actual execution playbooks (e.g., "How to safely migrate the database," or "How to run integration tests").
+
+implementation_plan.md (The Memory): The running ledger of what the previous agents have already built.
+
+Step-by-Step Orchestration in Antigravity
+Here is how you would build out a complex feature using the Agent Manager without ever running out of context:
+
+Step 1: The Planning Agent (The Architect)
+You open the Agent Manager and spawn your first agent.
+
+Your Prompt: "Review the implementation_plan.md. We need to add an integrated payment gateway. Break this down into 3 isolated tasks in the task_list.md."
+
+The Action: The agent plans the architecture, writes the tasks, and stops. You close this agent's thread.
+
+Step 2: The UI Agent (The Frontend Dev)
+You spawn a fresh agent.
+
+Your Prompt: "Execute Task 1 from the list. Build the checkout UI components. Open a new PowerShell instance if you need to install frontend dependencies. Do not touch backend logic."
+
+The Action: It builds the UI, logs exactly how the components work in the implementation_plan.md, commits the code, and stops. You close this thread.
+
+Step 3: The Logic Agent (The Backend Dev)
+You spawn another fresh agent.
+
+Your Prompt: "Execute Task 2. Wire up the API routes for the checkout UI that was just built (reference implementation_plan.md for the exact component names and state management)."
+
+The Action: It writes the backend logic, tests it, updates the docs, and commits.
+
+Why This is a Game Changer
+Because each agent only has the context of its specific prompt plus the markdown files, its context window remains lightning-fast and entirely uncluttered. It doesn't get confused by the 40 messages you sent three hours ago about a CSS bug, and it won't accidentally break your API while trying to fix a button color.
+
+To help me give you a hyper-specific orchestration plan, what is the core feature of the app you are about to build?
+
+You said
+Since you haven’t lost context.
+
+
+
+Give me a summary of our whole conversation and the most important points and don’t miss anything. Use the best format. Don’t missing anything because we need context for our ai orchestration so we can work better. Give me the architecture.
+
+
+
+You can break up the conversation by new features (insights, skills, new methods for examples
+
+
+
+
+
+A Skool.com scrapper that scrapes videos (hosted at Skool.com, embedded YT, wistia and Vimeo and text, and transcripts (substitutes ) *** were continue tomorrow w
+
+Gemini said
+Haha, context securely locked in the vault. I’ve got you covered.
+
+Here is the complete, master blueprint of everything we established today, synthesized into a strict framework for your AI orchestration. You can use this directly as your project's foundation when we pick this back up.
+
+Part 1: The Core Orchestration Philosophy
+The era of treating an AI agent like a single, endless chat thread is over. To prevent "amnesia" and infinite debugging loops, you are now operating as a Lead Architect managing a team of Ephemeral Agents.
+
+Agents are disposable: You spawn an agent for one specific task, force it to document its work, commit the code, and then you kill the thread.
+
+The System is the Memory: Agents rely entirely on a centralized markdown file structure to know what is going on, rather than chat history.
+
+Part 2: The Amnesia-Proof File Structure
+Every new project in Google Antigravity must start with this directory at the root level. This acts as the "brain" for every fresh agent you spawn.
+
+Plaintext
+skool-scraper-project/
+├── .agent_context/                 
+│   ├── GEMINI.md                   # The Blueprint: Project overview & tech stack
+│   ├── skills.md                   # Core behavioral rules and guardrails
+│   ├── implementation_plan.md      # The rolling ledger of completed features
+│   └── task_list.md                # Active, pending, and completed to-dos
+├── src/                            
+├── package.json
+└── .gitignore
+Part 3: The Master skills.md Playbook
+These are the exact behavioral guardrails you must feed to every agent to stop them from breaking code, getting stuck, or crashing your Windows environment.
+
+The Anchor Rule: Before moving to a new task, the agent must update the implementation_plan.md detailing the exact logic and files modified.
+
+Regression Protection: The agent must read the implementation plan to understand existing features before writing new code, ensuring it doesn't break old work.
+
+The Checkpoint Rule: Every successful feature must be locked in with a git commit so you can always use git reset --hard if the next agent botches the code.
+
+The Anti-Loop Circuit Breaker: If an agent tries to fix the same error three consecutive times and fails, it must strictly STOP, summarize the failed attempts, and wait for human intervention.
+
+Environment Constraints: The agent must explicitly know it is running natively on Windows and must exclusively use PowerShell for terminal commands. No Linux subsystem pathing or Bash commands.
+
+Multi-Terminal Management: The agent must narrate its terminal usage (e.g., "Opening new PowerShell instance for dev server"). It must never block an active terminal with a long-running task, and must always check for in-use ports before spinning up new services.
+
+Part 4: The Hybrid Tool Stack
+You are utilizing two distinct systems that collaborate through your file system:
+
+Google Antigravity (The Macro Worker): Used via the Manager View. Spawns ephemeral agents to handle broad scaffolding, project architecture, and UI/Browser testing.
+
+OpenClaw + Metaclaw (The Micro Specialist): Run entirely inside your Windows integrated terminal. Metaclaw acts as a proxy, giving OpenClaw persistent, cross-session memory of your specific coding quirks. Used for hyper-specific, complex logic (like stealth scraping bypasses).
+
+Part 5: Project Architecture - Skool.com Scraper
+Here is the orchestration battle plan for your new project. When we resume tomorrow, we will spawn separate Antigravity agents to execute these phases asynchronously.
+
+Project Goal: A comprehensive scraper for Skool.com that extracts text, raw video files (Direct Skool hosting, YouTube, Wistia, Vimeo), and transcripts/subtitles.
+
+Phase 1: The Planning & Auth Agent
+
+Task: Scaffold the project (e.g., Node.js + Puppeteer/Playwright Stealth).
+
+Logic: Set up the authentication bypass or session token management required to log into Skool.com without triggering anti-bot protection.
+
+Output: Generates the initial folder structure and updates implementation_plan.md with the auth flow.
+
+Phase 2: The Text & Layout Scraper Agent
+
+Task: Navigate to specific course modules or community posts.
+
+Logic: Extract all standard markdown/text content, post metadata, and structured course hierarchy.
+
+Output: Commits the scraping logic and logs the data structuring format.
+
+Phase 3: The Video Extraction Agent (The Heavy Lifter)
+
+Task: Identify and extract video source URLs.
+
+Logic: This requires specialized parsing because Skool mixes hosting methods. The agent must write distinct fallback functions for:
+
+Native Skool hosted videos.
+
+Embedded YouTube iframes.
+
+Wistia player wrappers.
+
+Vimeo embedded players.
+
+(Note: We will likely use OpenClaw + Metaclaw in the terminal for this, as it requires highly specific, complex DOM traversal).
+
+Phase 4: The Transcript & Subtitle Agent
+
+Task: Fetch the text-based audio files.
+
+Logic: Intercept the .vtt or .srt network requests from the video players, or scrape the raw transcript text directly from the DOM if Skool provides a reading pane.
+
+Everything is documented and locked. Ready to spin up the Manager View and start building the scraper whenever you are.
+
+
+Wher do I input this 
+
+
+Gemini is AI and can make mistakes.
