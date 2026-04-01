@@ -14,9 +14,9 @@
 - [x] Run `npm start` and save validation cookies correctly.
 
 ## Phase 2: Text & Layout Scraper
-- [ ] Navigate to specific course modules or community posts.
-- [ ] Extract markdown text, post metadata, and structural course hierarchy.
-- [ ] Log format to `implementation_plan.md`.
+- [x] Navigate to specific course modules or community posts.
+- [x] Extract markdown text, post metadata, and structural course hierarchy.
+- [x] Log format to `implementation_plan.md`.
 
 ## Phase 3: Video Extraction
 - [ ] Detect native Skool streams, Vimeo config endpoints, Wistia tokens, and YouTube iframes.

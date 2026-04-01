@@ -14,8 +14,10 @@ This file contains the running memory of all validated features and how they ope
 - Wait delays were adjusted to account for React Hydration and SPAs.
 - Automatically exports an authenticated `skool_cookies.json` which will be used in subsequent phases to forge GET requests for native Skool and Wistia videos.
 
-## Phase 2: Text & Layout Scraper
-*(Not yet implemented)*
+## Phase 2: Text & Layout Scraper [COMPLETED]
+- **Target**: Navigate to specific course module (e.g., `https://www.skool.com/group-juice/classroom...`).
+- **Logic**: Use Puppeteer's `page.evaluate` to extract the main module text/markdown content.
+- **Output**: The text content will be saved as a Markdown (`.md`) file to a module-specific directory, preparing the output folder to eventually hold the video (`.mp4`), audio (`.mp3`), and subtitles (`.txt`) formats from Phase 3 & 4.
 
 ## Phase 3: Video Extraction (The Heavy Lifter)
 *(Not yet implemented)*

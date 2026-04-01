@@ -49,8 +49,20 @@ puppeteer.use(StealthPlugin());
     const fs = require('fs');
     fs.writeFileSync('skool_cookies.json', JSON.stringify(cookies, null, 2));
     console.log('🍪 Session cookies saved to skool_cookies.json');
+    
+    const { scrapeModuleText } = require('./scraper');
 
-    // TODO: Proceed with Phase 2 (Text/Layout Scraper)
+    // Phrase 2: Navigate to target module URL
+    const targetUrl = 'https://www.skool.com/group-juice/classroom/ac29b470?md=011169e957ae445a90dc4913b6039fc9';
+    console.log(`\n Navigation to Target Module: ${targetUrl}`);
+    await page.goto(targetUrl, { waitUntil: 'networkidle2' });
+    
+    // Wait for the React module content to render
+    console.log(' Waiting 5 seconds for React hydration of module content...');
+    await new Promise(r => setTimeout(r, 5000));
+    
+    // Run the scraper logic
+    await scrapeModuleText(page);
 
   } catch (error) {
     console.error('❌ Failed during authentication sequence:', error);
