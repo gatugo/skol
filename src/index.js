@@ -30,17 +30,17 @@ puppeteer.use(StealthPlugin());
     await page.goto('https://www.skool.com/login', { waitUntil: 'networkidle2' });
 
     console.log(' Entering credentials...');
-    await page.waitForSelector('input[name="email"]');
-    await page.type('input[name="email"]', email, { delay: 55 });
+    await page.waitForSelector('#email');
+    await page.type('#email', email, { delay: 55 });
     
-    await page.waitForSelector('input[name="password"]');
-    await page.type('input[name="password"]', password, { delay: 65 });
+    await page.waitForSelector('#password');
+    await page.type('#password', password, { delay: 65 });
 
     console.log(' Submitting login...');
     await page.click('button[type="submit"]');
 
-    // Wait for the navigation to the dashboard or communities
-    await page.waitForNavigation({ waitUntil: 'networkidle2' });
+    // Wait 8 seconds for the React app to authenticate and set local cookies
+    await new Promise(r => setTimeout(r, 8000));
 
     console.log('✅ Authentication Successful!');
 

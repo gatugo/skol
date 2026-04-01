@@ -9,9 +9,10 @@ This file contains the running memory of all validated features and how they ope
 - Agent context files generated for state preservation and rule enforcement.
 - `.env` setup correctly for authentication.
 
-## Phase 1: Planning & Auth [IN PROGRESS]
-- `src/index.js` created with baseline logic for launching stealth browser and simulating login actions.
-- Waiting to test login execution pending valid credentials injected into the `.env` file by the user.
+## Phase 1: Planning & Auth [COMPLETED]
+- `src/index.js` securely launches a Stealth Puppeteer instance, navigates to Skool's login, and uses `.env` credentials to log in.
+- Wait delays were adjusted to account for React Hydration and SPAs.
+- Automatically exports an authenticated `skool_cookies.json` which will be used in subsequent phases to forge GET requests for native Skool and Wistia videos.
 
 ## Phase 2: Text & Layout Scraper
 *(Not yet implemented)*

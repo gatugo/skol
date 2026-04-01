@@ -10,8 +10,8 @@
 ## Phase 1: Authentication & Session Management
 - [x] Investigate Skool.com login flow.
 - [x] Set up Puppeteer Stealth instance with user credentials in `.env` inside `src/index.js`.
-- [ ] User needs to provide actual credentials in `.env` to validate the script execution.
-- [ ] Run `npm start` and save validation cookies correctly.
+- [x] User needs to provide actual credentials in `.env` to validate the script execution.
+- [x] Run `npm start` and save validation cookies correctly.
 
 ## Phase 2: Text & Layout Scraper
 - [ ] Navigate to specific course modules or community posts.
