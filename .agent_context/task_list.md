@@ -18,9 +18,12 @@
 - [x] Extract markdown text, post metadata, and structural course hierarchy.
 - [x] Log format to `implementation_plan.md`.
 
-## Phase 3: Video Extraction
-- [ ] Detect native Skool streams, Vimeo config endpoints, Wistia tokens, and YouTube iframes.
+## Phase 3: Video Extraction (In Progress)
+- [x] Implement initial network interception for native Skool HLS streams (.m3u8).
+- [/] Refactor into a modular Extractor pattern for Skool, YouTube, Wistia, and Vimeo.
+- [ ] Verify discovery of embedded iframe IDs.
 
-## Phase 4: Transcripts & Subtitles
-- [ ] Use Puppeteer `page.on('request')` to intercept `.vtt`/`.srt` network requests.
-- [ ] Generate clean `.txt` files from parsed subtitles.
+## Phase 4: Transcripts & Subtitles (In Progress)
+- [x] Intercept `.vtt` and `subtitles.m3u8` network requests.
+- [/] Standardize subtitle output to `media_links.json`.
+- [ ] Convert VTT to clean `.txt` transcripts.

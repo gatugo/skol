@@ -50,19 +50,34 @@ puppeteer.use(StealthPlugin());
     fs.writeFileSync('skool_cookies.json', JSON.stringify(cookies, null, 2));
     console.log('🍪 Session cookies saved to skool_cookies.json');
     
-    const { scrapeModuleText } = require('./scraper');
+    const { setupMediaInterceptor, scrapeModuleText } = require('./scraper');
+
+    // Set up network interceptor for media URLs (Phase 3 & 4)
+    console.log('\n📡 Setting up network interceptor for Phase 3 and 4...');
+    const mediaData = setupMediaInterceptor(page);
 
     // Phrase 2: Navigate to target module URL
     const targetUrl = 'https://www.skool.com/group-juice/classroom/ac29b470?md=011169e957ae445a90dc4913b6039fc9';
-    console.log(`\n Navigation to Target Module: ${targetUrl}`);
+    console.log(`Navigation to Target Module: ${targetUrl}`);
     await page.goto(targetUrl, { waitUntil: 'networkidle2' });
     
     // Wait for the React module content to render
     console.log(' Waiting 5 seconds for React hydration of module content...');
     await new Promise(r => setTimeout(r, 5000));
     
+    // Attempt to initialize video player to trigger HLS network traffic
+    console.log('▶️ Attempting to initialize video stream (Clicking play)...');
+    try {
+        await page.waitForSelector('media-controller', { timeout: 3000 });
+        await page.click('media-controller');
+        console.log('🖱️ Clicked video player. Waiting 4 seconds for streams to load...');
+        await new Promise(r => setTimeout(r, 4000));
+    } catch (e) {
+        console.log('⚠️ No video player found or it could not be clicked. Proceeding...');
+    }
+    
     // Run the scraper logic
-    await scrapeModuleText(page);
+    await scrapeModuleText(page, mediaData);
 
   } catch (error) {
     console.error('❌ Failed during authentication sequence:', error);
