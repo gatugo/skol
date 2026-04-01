@@ -1,7 +1,7 @@
 # Skool Course Scraper — Node/Playwright Project
 
 ## Project Goal
-A Node.js backend scraper for Skool.com that extracts text, raw video files (Direct Skool hosting, YouTube, Wistia, Vimeo), and transcripts/subtitles.
+A Node.js backend scraper for Skool.com that extracts text, raw video files (Direct Skool hosting, YouTube, Wistia, Vimeo), and transcripts/subtitles and text descriptions of modules.
 
 ## Tech Stack
 * Core: Node.js (package.json inside `C:\Users\mela\.aiprojects\skol`)
